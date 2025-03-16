@@ -14,7 +14,7 @@ private Ispr2438BondaevInKyrsa4Context _dbContext; <br>
     private void Main_Load(object sender, EventArgs e)<br>
     {<br>
 
-    }<br>
+    
 <br>
     private void addBtn_Click(object sender, EventArgs e)<br>
     {<br>
