@@ -1,4 +1,5 @@
 # code
+Вставить в консоль<br>
 Scaffold-DbContext "Server=;Database=;Uid=;Pwd=" Pomelo.EntityFrameworkCore.MySql -OutputDir Models -f 
 
 
@@ -20,19 +21,31 @@ public class UserController<br>
 public UserController _userController {  get; set; } = new ();<br>
 private void AutorizBtn_Click(object sender, EventArgs e)<br>
 {<br>
-    string login = LoginTb.Text;<br>
-    string password = PasswordTb.Text;<br>
-    try<br>
-    {Client? client = _userController.Authorize(login, password); <br>
-    <br>
-    if (user == null)<br> {<br> switch (client.TypeId)<br> }<br> case 4 :<br> new Zakaz4ikForm().Show();<br> break;<br> case 2 :<br> new MainForm().Show();<br> break;<br>
-default: MessageBox.Show("Роль не поддерживается.");<br>
-    return;<br>
-       }<br>
-    catch (Exception ex)<br>
-    {<br>
-        MessageBox.Show($"Ошибка: {ex.Message}");<br>
-    }<br>
+string login = LoginTb.Text;<br>
+string password = PasswordTb.Text; <br>
+try<br>
+{<br>
+Client? client = _userController.Authorize(login, password);<br>
+if (client == null)<br>
+{ <br>
+switch (client.TypeId)<br>
+{<br>
+case 4: <br>
+new Zakaz4ikForm().Show();<br>
+break;<br>
+case 2:<br>
+new MainForm().Show();<br>
+break; <br>
+default: MessageBox.Show("Роль не поддерживается."); <br>
+return;<br>
+} this.Hide();<br>
+} <br>
+}<br>
+catch (Exception ex) <br>
+{ <br>
+MessageBox.Show($"Ошибка: {ex.Message}"); <br>
+}<br>
+
 }<br>
 <br>
 private Ispr2438BondaevInKyrsa4Context _dbContext; <br>
