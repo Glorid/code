@@ -22,19 +22,22 @@ private void AutorizBtn_Click(object sender, EventArgs e)<br>
     string login = LoginTb.Text;<br>
     string password = PasswordTb.Text;<br>
     try<br>
-    {<br>
-        Authorization? user = _userController.Authorize(login, password);<br>
+    {Client? client = _userController.Authorize(login, password); <br>
+    <br>
+       
         if (user == null)<br>
         {<br>
-            MessageBox.Show("Некорректно введены логин или пароль");<br>
+            switch (client.TypeId)<br>
         }<br>
-        else<br>
-        {<br>
-            Main mainForm = new Main();<br>
-            mainForm.Show();<br>
-            Hide();<br>
-        }<br>
-    }<br>
+        case 4 :<br>
+        new Zakaz4ikForm(client).Show();<br>
+        break;<br>
+        case 2 :<br>
+    new MainForm().Show();<br>
+    break;<br>
+default: MessageBox.Show("Роль не поддерживается.");<br>
+    return;<br>
+       }<br>
     catch (Exception ex)<br>
     {<br>
         MessageBox.Show($"Ошибка: {ex.Message}");<br>
