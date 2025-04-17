@@ -60,8 +60,7 @@ private Ispr2438BondaevInKyrsa4Context _dbContext; <br>
         var jobTitles = _dbContext.JobTitles.ToList();<br>
         dataGridView1.DataSource = jobTitles;<br>
     }<br>
-    private void Main_Load(object sender, EventArgs e)<br>
-    {<br>
+    
 
     
 <br>
