@@ -12,6 +12,7 @@ public class UserController<br>
     public Authorization? Authorize(string login, string password)<br>
     {<br>
         return _dbContext.Authorizations<br>
+        .Include(u => u.Type)<br>
             .FirstOrDefault(u => u.Login == login && u.Password == password);<br>
     }<br>
 }<br>
@@ -24,7 +25,7 @@ private void AutorizBtn_Click(object sender, EventArgs e)<br>
     try<br>
     {Client? client = _userController.Authorize(login, password); <br>
     <br>
-    if (user == null)<br> {<br> switch (client.TypeId)<br> }<br> case 4 :<br> new Zakaz4ikForm(client).Show();<br> break;<br> case 2 :<br> new MainForm().Show();<br> break;<br>
+    if (user == null)<br> {<br> switch (client.TypeId)<br> }<br> case 4 :<br> new Zakaz4ikForm().Show();<br> break;<br> case 2 :<br> new MainForm().Show();<br> break;<br>
 default: MessageBox.Show("Роль не поддерживается.");<br>
     return;<br>
        }<br>
